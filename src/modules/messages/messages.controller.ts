@@ -1,12 +1,16 @@
 import {
   Body,
   Controller,
-  Delete,
   Get,
   Param,
-  Patch,
   Post,
+  Req,
+  UsePipes,
 } from '@nestjs/common'
+
+import { CodeTransformPipe } from '@utils'
+
+import { MessageCreateDto, MessageQueryDto } from '@interfaces'
 
 import { MessagesService } from '@messages/messages.service'
 
@@ -15,27 +19,18 @@ export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
   @Post()
-  create(@Body() createMessageDto: any) {
-    return this.messagesService.create()
+  @UsePipes(new CodeTransformPipe())
+  public async create(@Body() messageCreateDto: MessageCreateDto) {
+    return this.messagesService.createMessage(messageCreateDto)
   }
 
   @Get()
-  findAll() {
+  getMessages() {
     return this.messagesService.findAll()
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  getMessage(@Param('id') id: string, @Req() messageQueryDto: MessageQueryDto) {
     return this.messagesService.findOne(+id)
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateMessageDto: any) {
-    return this.messagesService.update(+id)
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.messagesService.remove(+id)
   }
 }

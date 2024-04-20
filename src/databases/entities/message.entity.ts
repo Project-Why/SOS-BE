@@ -2,7 +2,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm'
 
@@ -11,7 +10,7 @@ export class Message {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column('varchar')
+  @Column({ type: 'varchar', length: 1024 })
   code: string
 
   @CreateDateColumn({ type: 'timestamp' })
