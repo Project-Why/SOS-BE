@@ -75,6 +75,16 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
+    "moduleNameMapper": {
+      "^@src/(.*)$": "<rootDir>/$1",
+      "^@messages/(.*)$": "<rootDir>/modules/messages/$1",
+      "^@utils/(.*)$": "<rootDir>/utils/$1",
+      "^@utils": "<rootDir>/utils",
+      "^@interfaces/(.*)$": "<rootDir>/interfaces/$1",
+      "^@interfaces": "<rootDir>/interfaces",
+      "^@entities/(.*)$": "<rootDir>/databases/entities/$1",
+      "^@configs/(.*)$": "<rootDir>/configs/$1"
+    },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
