@@ -14,10 +14,11 @@ export class MessagesService {
     private readonly messageRepository: Repository<Message>,
   ) {}
 
-  async createMessage(messageCreateDto: MessageCreateDto) {
+  async createMessage(location: string, messageCreateDto: MessageCreateDto) {
     const { message: code } = messageCreateDto
     const message = this.messageRepository.create()
     message.code = code
+    message.location = location
     const result = (await this.messageRepository.insert(message))
       .generatedMaps[0]
     return result
