@@ -1,21 +1,14 @@
-import {
-  Body,
-  Controller,
-  Get,
-  Ip,
-  Param,
-  Post,
-  Req,
-  UsePipes,
-} from '@nestjs/common'
+import { Body, Controller, Get, Ip, Post, UsePipes } from '@nestjs/common'
 
 import { CodeTransformPipe, isLocal } from '@utils'
 
-import { MessageCreateDto, MessageQueryDto } from '@interfaces'
+import { MessageCreateDto, MessageReadDto } from '@interfaces'
 
 import { MessagesService } from '@messages/messages.service'
 
 import axios from 'axios'
+
+import { responseToRead } from './message.util'
 
 @Controller('messages')
 export class MessagesController {
@@ -26,7 +19,7 @@ export class MessagesController {
   public async create(
     @Ip() ip: string,
     @Body() messageCreateDto: MessageCreateDto,
-  ) {
+  ): Promise<MessageReadDto> {
     let location: string = 'unknown'
 
     // For Debug
@@ -43,20 +36,21 @@ export class MessagesController {
       .then(value => {
         location = value.data.split(';')[2]
       })
-      .catch(err => {
-        console.log(err)
+      .catch(error => {
+        alert(error)
       })
 
-    return this.messagesService.createMessage(location, messageCreateDto)
+    const response = await this.messagesService.createMessage(
+      location,
+      messageCreateDto,
+    )
+
+    return responseToRead(response)
   }
 
   @Get()
-  getMessages() {
-    return this.messagesService.findAll()
-  }
-
-  @Get(':id')
-  getMessage(@Param('id') id: string, @Req() messageQueryDto: MessageQueryDto) {
-    return this.messagesService.findOne(+id)
+  async getMessages(): Promise<MessageReadDto[]> {
+    const response = await this.messagesService.findMessages()
+    return response.map(message => responseToRead(message))
   }
 }

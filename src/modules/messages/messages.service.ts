@@ -14,21 +14,27 @@ export class MessagesService {
     private readonly messageRepository: Repository<Message>,
   ) {}
 
-  async createMessage(location: string, messageCreateDto: MessageCreateDto) {
+  async createMessage(
+    location: string,
+    messageCreateDto: MessageCreateDto,
+  ): Promise<Message> {
     const { message: code } = messageCreateDto
     const message = this.messageRepository.create()
     message.code = code
     message.location = location
     const result = (await this.messageRepository.insert(message))
-      .generatedMaps[0]
+      .generatedMaps[0] as Message
+    result.code = code
+    result.location = location
     return result
   }
 
-  findAll() {
-    return `This action returns all messages`
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} message`
+  async findMessages(): Promise<Message[]> {
+    const queryBuilder = this.messageRepository
+      .createQueryBuilder()
+      .select()
+      .orderBy('RAND()')
+      .limit(20)
+    return await queryBuilder.getMany()
   }
 }
