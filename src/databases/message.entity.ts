@@ -14,7 +14,7 @@ export class Message {
   code: string
 
   @CreateDateColumn({ type: 'timestamp' })
-  createdAt!: Date
+  createdAt!: string
 
   @Column({ type: 'varchar' })
   location: string

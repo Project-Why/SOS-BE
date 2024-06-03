@@ -1,6 +1,6 @@
 export interface MessageReadDto {
   id: number
-  createdAt: Date
+  createdAt: string
   location: string
   code: string
 }
