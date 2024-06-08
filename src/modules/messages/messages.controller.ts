@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Ip, Post, UsePipes } from '@nestjs/common'
+import { Throttle } from '@nestjs/throttler'
 
 import { CodeTransformPipe, isLocal } from '@utils'
 
@@ -14,6 +15,10 @@ import { responseToRead } from './message.util'
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
+  @Throttle({
+    '1m': { limit: 10, ttl: 6000 },
+    '1h': { limit: 20, ttl: 360000 },
+  })
   @Post()
   @UsePipes(new CodeTransformPipe())
   public async create(
@@ -48,6 +53,10 @@ export class MessagesController {
     return responseToRead(response)
   }
 
+  @Throttle({
+    '1m': { limit: 24, ttl: 6000 },
+    '1h': { limit: 48, ttl: 360000 },
+  })
   @Get()
   async getMessages(): Promise<MessageReadDto[]> {
     const response = await this.messagesService.findMessages()
