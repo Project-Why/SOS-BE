@@ -39,8 +39,8 @@ lerna-debug.log*
 !.env.template
 
 # Ignore infra
-infra/terraform/.terraform/*
-infra/terraform/variables.tf
-infra/terraform/*.tfstate
-infra/terraform/*.tfstate.*
-infra/terraform/*.hcl
+terraform/.terraform/*
+terraform/variables.tf
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.hcl
