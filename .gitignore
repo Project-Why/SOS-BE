@@ -37,3 +37,10 @@ lerna-debug.log*
 # dotenv environment variable files
 .env.*
 !.env.template
+
+# Ignore infra
+infra/terraform/.terraform/*
+infra/terraform/variables.tf
+infra/terraform/*.tfstate
+infra/terraform/*.tfstate.*
+infra/terraform/*.hcl

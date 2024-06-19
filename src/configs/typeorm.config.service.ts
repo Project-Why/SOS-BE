@@ -14,6 +14,7 @@ export class TypeOrmConfigService implements TypeOrmOptionsFactory {
       username: this.configService.get<string>('TYPEORM_USERNAME'),
       password: this.configService.get<string>('TYPEORM_PASSWORD'),
       database: this.configService.get<string>('TYPEORM_DATABASE'),
+      entities: [this.configService.get<string>('TYPEORM_MIGRATIONS')],
       migrations: [this.configService.get<string>('TYPEORM_MIGRATIONS')],
       logging: this.configService.get<string>('TYPEORM_LOGGING') === 'true',
       synchronize:
