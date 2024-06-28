@@ -44,3 +44,6 @@ terraform/variables.tf
 terraform/*.tfstate
 terraform/*.tfstate.*
 terraform/*.hcl
+terraform/ecs_updater
+!terraform/ecs_updater/ecs_task_updater.py
+!terraform/ecs_updater/requirements.txt

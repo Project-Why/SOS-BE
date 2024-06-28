@@ -47,12 +47,12 @@ resource "aws_route_table_association" "main" {
   route_table_id = aws_route_table.main.id
 }
 
-resource "aws_db_subnet_group" "aurora_subnet_group" {
-  name       = "aurora-subnet-group"
+resource "aws_db_subnet_group" "db_subnet_group" {
+  name       = "db-subnet-group"
   subnet_ids = aws_subnet.main[*].id
 
   tags = {
-    Name = "aurora-subnet-group"
+    Name = "db-subnet-group"
   }
 }
 
@@ -62,10 +62,10 @@ output "vpc_id" {
   value = aws_vpc.main.id
 }
 
-output "db_subnet_ids" {
+output "subnet_ids" {
   value = aws_subnet.main[*].id
 }
 
-output "aurora_subnet_group_name" {
-  value = aws_db_subnet_group.aurora_subnet_group.name
+output "db_subnet_group_name" {
+  value = aws_db_subnet_group.db_subnet_group.name
 }
