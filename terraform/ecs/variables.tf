@@ -11,8 +11,8 @@ variable "ecr_app_repository_name" {
   type        = string
 }
 
-variable "ecr_update_event_name" {
-  description = "The name of the ECR repository image update event at cloudwatch"
+variable "ecr_app_repository_tag" {
+  description = "The tag of the ECR repository for the application server image"
   type        = string
 }
 
@@ -40,10 +40,5 @@ variable "subnet_ids" {
 
 variable "ecs_task_execution_role_arn" {
   description = "IAM role arn for task execution"
-  type        = string
-}
-
-variable "lambda_execution_role_arn" {
-  description = "IAM role arn for lambda execution"
   type        = string
 }

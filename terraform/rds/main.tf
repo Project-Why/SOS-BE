@@ -19,6 +19,7 @@ resource "aws_db_instance" "db_instance" {
   engine_version          = "8.0.34"
   username                = var.db_username
   password                = var.db_password
+  db_name                 = var.db_name
   allocated_storage       = 20
   db_subnet_group_name    = var.db_subnet_group_name
   vpc_security_group_ids  = [var.db_sg_id]

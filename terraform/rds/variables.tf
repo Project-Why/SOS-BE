@@ -13,6 +13,11 @@ variable "db_password" {
     type = string
 }
 
+variable "db_name" {
+    description = "The name of database"
+    type = string
+}
+
 variable "db_subnet_group_name" {
     description = "Subnet group name for db"
     type = string
