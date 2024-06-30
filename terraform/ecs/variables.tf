@@ -19,13 +19,11 @@ variable "ecr_app_repository_tag" {
 variable "ecs_app_cluster_name" {
   description = "The name of the ECS cluster"
   type        = string
-  default     = "sos-app-cluster"
 }
 
 variable "ecs_service_name" {
   description = "The name of the ECS service"
   type        = string
-  default     = "sos-service"
 }
 
 variable "security_group_ids" {

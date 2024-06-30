@@ -12,6 +12,11 @@ module "iam" {
   source = "./common/iam"
 }
 
+module "cloudwatch" {
+  source           = "./common/cloudwatch"
+  ecs_service_name = var.ecs_service_name
+}
+
 module "ecr" {
   source                  = "./ecr"
   ecr_app_repository_name = var.ecr_app_repository_name

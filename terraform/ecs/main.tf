@@ -19,6 +19,14 @@ resource "aws_ecs_task_definition" "app_task" {
       containerPort = 80
       hostPort      = 80
     }]
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = "/ecs/${var.ecs_service_name}"
+        "awslogs-region"        = var.region
+        "awslogs-stream-prefix" = "ecs"
+      }
+    }
   }])
 
   runtime_platform {
