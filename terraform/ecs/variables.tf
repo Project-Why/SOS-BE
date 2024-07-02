@@ -40,3 +40,13 @@ variable "ecs_task_execution_role_arn" {
   description = "IAM role arn for task execution"
   type        = string
 }
+
+variable "app_tg_arn" {
+  description = "The ARN of Load balancer tag group"
+  type        = string
+}
+
+variable "app_lb_listener_arn" {
+  description = "The ARN of Load balancing listener"
+  type        = string
+}

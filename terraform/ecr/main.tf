@@ -1,4 +1,3 @@
-# App
 resource "aws_ecr_repository" "app_repository" {
   name = var.ecr_app_repository_name
 }
@@ -48,4 +47,8 @@ resource "aws_ecr_repository_policy" "app_policy" {
     ]
   }
   EOF
+}
+
+output "app_repository_url" {
+  value = aws_ecr_repository.app_repository.repository_url
 }
