@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Ip, Post, UsePipes } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Get,
+  Ip,
+  Logger,
+  Post,
+  UsePipes,
+} from '@nestjs/common'
 import { Throttle } from '@nestjs/throttler'
 
 import { CodeTransformPipe, isLocal } from '@utils'
@@ -42,7 +50,7 @@ export class MessagesController {
         location = value.data.split(';')[2]
       })
       .catch(error => {
-        alert(error)
+        new Logger('HTTP').error(error)
       })
 
     const response = await this.messagesService.createMessage(
