@@ -17,7 +17,7 @@ module "lb" {
   security_group_ids = [module.security.lb_sg_id]
   subnet_ids         = module.network.ecs_public_subnet_ids
   ecs_vpc_id         = module.network.ecs_vpc_id
-
+  certificate_arn    = var.certificate_arn
 }
 
 module "cloudwatch" {

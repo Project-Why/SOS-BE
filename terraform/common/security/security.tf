@@ -27,8 +27,8 @@ resource "aws_security_group" "lb_sg" {
   vpc_id      = var.ecs_vpc_id
 
   ingress {
-    from_port   = 0
-    to_port     = 65535
+    from_port   = 443
+    to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -50,9 +50,9 @@ resource "aws_security_group" "ecs_task_sg" {
   vpc_id      = var.ecs_vpc_id
 
   ingress {
-    from_port   = 0
-    to_port     = 65535
-    protocol    = "tcp"
+    from_port                = 80
+    to_port                  = 80
+    protocol                 = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 

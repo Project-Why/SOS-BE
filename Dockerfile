@@ -5,7 +5,7 @@ FROM --platform=linux/amd64 node:18
 WORKDIR /usr/src/app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
-COPY package*.json ./
+COPY package.json .
 
 # Install app dependencies
 RUN npm install
@@ -20,7 +20,7 @@ COPY .env.production .
 RUN npm run build
 
 # Expose the port on which the app will run
-EXPOSE 4000
+EXPOSE 80
 
 # Start the server using the production build
 CMD ["npm", "run", "start:prod"]
