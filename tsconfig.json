@@ -25,6 +25,7 @@
       "@utils/*": ["src/utils/*"],
       "@guards": ["src/guards"],
       "@guards/*": ["src/guards/*"],
+      "@middlewares/*": ["src/middlewares/*"],
       "@entities/*": ["src/databases/*"],
       "@repositories/*": ["src/databases/repositories/*"],
       "@messages/*": ["src/modules/messages/*"]

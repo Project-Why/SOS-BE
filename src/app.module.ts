@@ -6,9 +6,11 @@ import { TypeOrmConfigService } from '@configs/typeorm.config.service'
 
 import { MessagesModule } from '@messages/messages.module'
 
+import { IpMiddleware } from '@middlewares/ip.middleware'
+import { AppLoggerMiddleware } from '@middlewares/logger.middleware'
+
 import { AppController } from './app.controller'
 import { AppService } from './app.service'
-import { AppLoggerMiddleware } from './middleware/logger.middleware'
 
 @Module({
   imports: [
@@ -28,5 +30,6 @@ import { AppLoggerMiddleware } from './middleware/logger.middleware'
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AppLoggerMiddleware).forRoutes('*')
+    consumer.apply(IpMiddleware).forRoutes('*')
   }
 }

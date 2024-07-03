@@ -13,11 +13,10 @@ import { CodeTransformPipe, isLocal } from '@utils'
 
 import { MessageCreateDto, MessageReadDto } from '@interfaces'
 
+import { responseToRead } from '@messages/message.util'
 import { MessagesService } from '@messages/messages.service'
 
 import axios from 'axios'
-
-import { responseToRead } from './message.util'
 
 @Controller('messages')
 export class MessagesController {

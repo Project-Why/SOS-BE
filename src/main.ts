@@ -3,8 +3,9 @@ import { NestFactory } from '@nestjs/core'
 
 import { isLocal } from '@utils'
 
+import { HttpExceptionFilter } from '@middlewares/exception-filter.middleware'
+
 import { AppModule } from './app.module'
-import { HttpExceptionFilter } from './middleware/exception-filter.middleware'
 
 const logger = new Logger()
 
