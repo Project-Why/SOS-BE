@@ -2,20 +2,22 @@ import {
   Body,
   Controller,
   Get,
-  Ip,
   Logger,
   Post,
+  Req,
   UsePipes,
 } from '@nestjs/common'
 import { Throttle } from '@nestjs/throttler'
 
-import { CodeTransformPipe, isLocal } from '@utils'
+import { isLocal } from '@utils'
 
 import { MessageCreateDto, MessageReadDto } from '@interfaces'
 
 import { responseToRead } from '@messages/message.util'
 import { MessagesService } from '@messages/messages.service'
 
+import { CodeTransformPipe } from '@middlewares/code.transform.pipe'
+import { IPv4 } from '@middlewares/ip.parameter.decorator'
 import axios from 'axios'
 
 @Controller('messages')
@@ -27,10 +29,9 @@ export class MessagesController {
     '1h': { limit: 20, ttl: 360000 },
   })
   @Post()
-  @UsePipes(new CodeTransformPipe())
   public async create(
-    @Ip() ip: string,
-    @Body() messageCreateDto: MessageCreateDto,
+    @IPv4() ip: string,
+    @Body(new CodeTransformPipe()) messageCreateDto: MessageCreateDto,
   ): Promise<MessageReadDto> {
     let location: string = 'unknown'
 
