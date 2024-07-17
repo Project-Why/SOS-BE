@@ -3,6 +3,11 @@ variable "db_sg_id" {
     type = string
 }
 
+variable "db_instance_name" {
+  description = "The name of the RDS instance"
+  type        = string
+}
+
 variable "db_username" {
     description = "Root user name"
     type = string

@@ -48,8 +48,9 @@ module "ecs" {
 module "rds" {
   source = "./rds"
   db_sg_id             = module.security.db_sg_id
-  db_username          = var.db_master_username
-  db_password          = var.db_master_password
+  db_instance_name     = var.db_instance_name
+  db_username          = var.db_username
+  db_password          = var.db_password
   db_name              = var.db_name
   db_subnet_group_name = module.network.db_subnet_group_name
 }

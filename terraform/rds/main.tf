@@ -13,7 +13,7 @@ resource "aws_db_parameter_group" "db_instance_pg" {
 }
 
 resource "aws_db_instance" "db_instance" {
-  identifier              = "sos-instance"
+  identifier              = var.db_instance_name
   instance_class          = "db.t3.micro"
   engine                  = "mysql"
   engine_version          = "8.0.34"
