@@ -1,60 +1,29 @@
-## Description
+## Development Environment
 
-BE Toy project of gym reservation system.
-You can get hint when you firstly implement Back-end project.
+![js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![js](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![js](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)
 
-## Environment
+## Abstract
+
+[s.o.s](https://project-why.github.io/s.o.s/) is gamified social media.
+
+- Explore empty space.
+- Discover rescue messages, and decode the rescue message.
+- Leave your own message in void space.
+
+<img src="./public/demo1.png" width="100%" height="auto" title="Demo 1"/>
+
+## Environment Settings
 
 ```bash
 $ node -v
-v18.17.1
+> v18.17.1
 
 $ npm -v
-9.6.7
-```
+> 9.6.7
 
-## Installation
-
-```bash
 $ npm install
-```
 
-## Running the app
-
-```bash
-# development
 $ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).

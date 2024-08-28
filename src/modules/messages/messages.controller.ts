@@ -4,6 +4,7 @@ import {
   Get,
   Logger,
   Post,
+  Query,
   Req,
   UsePipes,
 } from '@nestjs/common'
@@ -66,8 +67,8 @@ export class MessagesController {
     '1h': { limit: 48, ttl: 360000 },
   })
   @Get()
-  async getMessages(): Promise<MessageReadDto[]> {
-    const response = await this.messagesService.findMessages()
+  async getMessages(@Query('count') count?: number): Promise<MessageReadDto[]> {
+    const response = await this.messagesService.findMessages(count)
     return response.map(message => responseToRead(message))
   }
 }

@@ -45,3 +45,6 @@ terraform/*.tfstate
 terraform/*.tfstate.*
 terraform/*.hcl
 terraform/variables.tf.bak
+
+# Docker
+docker-compose.yaml

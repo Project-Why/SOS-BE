@@ -29,12 +29,12 @@ export class MessagesService {
     return result
   }
 
-  async findMessages(): Promise<Message[]> {
+  async findMessages(count?: number): Promise<Message[]> {
     const queryBuilder = this.messageRepository
       .createQueryBuilder()
       .select()
       .orderBy('RAND()')
-      .limit(20)
+      .limit(count ?? 20)
     return await queryBuilder.getMany()
   }
 }
